@@ -1,0 +1,25 @@
+{
+    "name": "fj-ahmed/laravel-log-keeper",
+    "description": "Laravel Log Keeper helps rotating you logs while storing them anywhere you want with custom local/remote retention policies",
+    "keywords": ["laravel", "log", "s3", "retention", "dropbox", "ftp", "sftp", "rotation", "disk", "drive", "remote"],
+    "autoload": {
+        "psr-4": {
+            "FjAhmed\\LaravelLogKeeper\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "FJ Ahmed",
+            "email": "farhan@fyxify.com"
+        }
+    ],
+    "require": {
+        "madnest/madzipper": "^1.2"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}
