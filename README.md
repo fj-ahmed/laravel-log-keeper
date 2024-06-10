@@ -5,7 +5,7 @@ Laravel Log Keeper
 [![Latest Version](https://img.shields.io/github/release/mathiasgrimm/laravel-log-keeper.svg?style=flat-square)](https://github.com/mathiasgrimm/laravel-log-keeper/releases)
 [![Total Downloads](https://img.shields.io/packagist/dt/mathiasgrimm/laravel-log-keeper.svg?style=flat-square)](https://packagist.org/packages/mathiasgrimm/laravel-log-keeper)
 
-Laravel Log Keeper helps rotating your logs while storing them anywhere you want with custom local/remote retention policies.
+Laravel Log Keeper helps to rotate your logs while storing them anywhere you want with custom local/remote retention policies.
 
 A typical usage of Laravel Log Keeper would be to set a cron job to run daily and store local logs in a S3 bucket, (s)ftp, Dropbox or any other FileSystem driver
 
@@ -27,7 +27,7 @@ Laravel Log Keeper is available via Composer:
 ```json
 {
     "require": {
-        "mathiasgrimm/laravel-log-keeper": "1.*"
+        "fj-ahmed/laravel-log-keeper": "1.*"
     }
 }
 ```
@@ -43,7 +43,7 @@ Laravel Log Keeper is available via Composer:
 
 'providers' => [
     ...
-    MathiasGrimm\LaravelLogKeeper\Providers\LaravelServiceProvider::class,
+    FjAhmed\LaravelLogKeeper\Providers\LaravelServiceProvider::class,
     ...
 ],
 ```
@@ -54,7 +54,7 @@ Laravel Log Keeper is available via Composer:
 
 protected $commands = [
     ...
-    \MathiasGrimm\LaravelLogKeeper\Commands\LogKeeper::class
+    \FjAhmed\LaravelLogKeeper\Commands\LogKeeper::class
     ...
 ];
 
@@ -108,7 +108,7 @@ LARAVEL_LOG_KEEPER_REMOTE_PATH           = "myproject1-prod-01"
     // ----------------------------------------------------------------------------
     // Enable or Disable the Laravel Log Keeper for remote operations.
     // if it is set to false, the local files older than the local retention will be
-    // delete without being uploaded to the remote disk
+    // deleted without being uploaded to the remote disk
     // ----------------------------------------------------------------------------
     'enabled_remote' => env('LARAVEL_LOG_KEEPER_ENABLED_REMOTE', true),
 
@@ -159,9 +159,10 @@ LARAVEL_LOG_KEEPER_REMOTE_PATH           = "myproject1-prod-01"
 
 ## Security
 
-If you discover any security related issues, please email mathiasgrimm@gmail.com instead of using the issue tracker.
+If you discover any security related issues, please email farhan@fyxify.com instead of using the issue tracker.
 
 ## Credits
 
 - [Mathias Grimm](https://github.com/mathiasgrimm)
+- [FJ Ahmed](https://github.com/fj-ahmed)
 
