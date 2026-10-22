@@ -27,7 +27,7 @@ Laravel Log Keeper is available via Composer:
 ```json
 {
     "require": {
-        "fj-ahmed/laravel-log-keeper": "1.*"
+        "fj-ahmed/laravel-log-keeper": "^2.0"
     }
 }
 ```

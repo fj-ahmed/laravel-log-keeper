@@ -20,7 +20,7 @@ return [
     // or specify a custom folder like proj1-prod or proj1-integ so that you could
     // use the same s3 bucket for storing the logs in different environments
     // ----------------------------------------------------------------------------
-    'remote_path' => rtrim(env('LARAVEL_LOG_KEEPER_REMOTE_PATH'), '/'),
+    'remote_path' => rtrim((string) env('LARAVEL_LOG_KEEPER_REMOTE_PATH'), '/'),
 
     // ----------------------------------------------------------------------------
     // How many days a file will be kept on the local disk before

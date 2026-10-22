@@ -89,7 +89,8 @@ class LogUtil
     public static function diffInDays($log, Carbon $date)
     {
         $logDate = static::getDate($log);
-        $days    = $logDate->diffInDays($date);
+        // Carbon 3 (Laravel 11+) returns a signed float; keep Carbon 2's absolute int.
+        $days    = (int) round($logDate->diffInDays($date, true));
 
         return $days;
     }

@@ -46,7 +46,10 @@ class RemoteLogsRepo implements LogsRepoInterface
     {
         $path = "{$this->remotePath}{$log}";
 
-        $this->disk->put($path, $content);
+        // Flysystem 3 (Laravel 9+) returns false instead of throwing when a write fails.
+        if (!$this->disk->put($path, $content)) {
+            throw new Exception("Failed to upload {$log} to the remote disk");
+        }
     }
 
     public function getCompressed()

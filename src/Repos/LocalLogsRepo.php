@@ -4,6 +4,7 @@ namespace FjAhmed\LaravelLogKeeper\Repos;
 
 use Exception;
 use Illuminate\Filesystem\Filesystem;
+use ZipArchive;
 use FjAhmed\LaravelLogKeeper\Support\LogUtil;
 
 class LocalLogsRepo implements LogsRepoInterface
@@ -54,11 +55,19 @@ class LocalLogsRepo implements LogsRepoInterface
 //            throw new Exception("Something went wrong when compressing {$log}");
 //        }
 
-        $zipper = new \Madnest\Madzipper\Madzipper;
+        $zipPath = "{$this->localLogPath}/{$compressedName}";
+        $logPath = "{$this->localLogPath}/{$log}";
 
+        $zip    = new ZipArchive();
+        $result = $zip->open($zipPath, ZipArchive::CREATE);
 
-        $zipper->make(storage_path("logs/{$compressedName}"))->add(storage_path("logs/{$log}"));
-        $zipper->close();
+        if ($result !== true) {
+            throw new Exception("Error: Failed to open {$zipPath}! Error: {$result}");
+        }
+
+        if (!$zip->addFile($logPath, basename($logPath)) || !$zip->close()) {
+            throw new Exception("Something went wrong when compressing {$log}");
+        }
 
         $this->disk->delete("{$this->localLogPath}/{$log}");
     }
